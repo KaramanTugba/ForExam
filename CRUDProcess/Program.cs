@@ -1,7 +1,12 @@
+using CRUDProcess.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>(options=>options.UseSqlServer("name=ConnectionStrings:Context"));
+//olmadý//builder.Services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Context")));
 
 var app = builder.Build();
 
