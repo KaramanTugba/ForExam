@@ -18,7 +18,8 @@ namespace CRUDProcess.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var list = _context.Student.ToList();
+            return View(list);
         }
         public async Task<IActionResult>Create(Student student)
         {
