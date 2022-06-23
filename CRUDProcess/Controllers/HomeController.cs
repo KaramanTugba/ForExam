@@ -30,7 +30,14 @@ namespace CRUDProcess.Controllers
         }
         public async Task<IActionResult>Create(Student student)
         {
-            await _context.AddAsync(student);
+            if (student.Id==0)
+            {
+                await _context.AddAsync(student);
+            }
+            else
+            {
+              _context.Update(student);
+            }
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
